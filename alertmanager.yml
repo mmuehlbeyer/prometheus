@@ -1,0 +1,22 @@
+global:
+  smtp_smarthost: 'email-smtp.eu-west-1.amazonaws.com:25'
+  smtp_from: 'info@yourdomain'
+  smtp_require_tls: true
+  smtp_auth_username: 'xxx'
+  smtp_auth_password: 'zzz'
+
+templates:
+- '/etc/alertmanager/mail.tmpl'
+
+route:
+  group_by: [job, instance]
+  group_wait: 10s
+  group_interval: 10s
+  receiver: 'mymon'
+
+receivers:
+  - name: 'mymon'
+    email_configs:
+      - to: 'monitor@byom.de'
+        html: null
+        text: '{{ template "email.mail.text" . }}'

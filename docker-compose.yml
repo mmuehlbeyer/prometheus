@@ -1,0 +1,45 @@
+version: '3.1'
+
+networks:
+  monitor-net:
+    driver: bridge
+
+services:
+
+  prometheus:
+    build:
+      context: .
+      dockerfile: prometheus
+    restart: unless-stopped
+    expose:
+      - 9090
+    networks:
+      - monitor-net
+    ports:
+      - "9090:9090"
+    labels:
+      org.label-schema.group: "monitoring"
+  alertmanager:
+    build:
+      context: .
+      dockerfile: alert_manager
+    restart: unless-stopped
+    expose:
+      - 9093
+    ports:
+      - "9093:9093"
+    networks:
+      - monitor-net
+    environment:
+    labels:
+      org.label-schema.group: "monitoring"
+  blackboxexporter:
+    build:
+      context: .
+      dockerfile: blackbox_exporter
+    expose:
+      - 9115
+    networks:
+      - monitor-net
+    ports:
+      - "9115:9115"
