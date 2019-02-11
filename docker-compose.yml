@@ -17,8 +17,6 @@ services:
       - monitor-net
     ports:
       - "9090:9090"
-    labels:
-      org.label-schema.group: "monitoring"
   alertmanager:
     build:
       context: .
@@ -30,9 +28,6 @@ services:
       - "9093:9093"
     networks:
       - monitor-net
-    environment:
-    labels:
-      org.label-schema.group: "monitoring"
   blackboxexporter:
     build:
       context: .
