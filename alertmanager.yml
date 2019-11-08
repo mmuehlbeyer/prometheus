@@ -1,5 +1,5 @@
 global:
-  smtp_smarthost: 'email-smtp.eu-west-1.amazonaws.com:25'
+  smtp_smarthost: 'yoursmtp.yourdomain:25'
   smtp_from: 'info@yourdomain'
   smtp_require_tls: true
   smtp_auth_username: 'xxx'
