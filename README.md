@@ -1,6 +1,6 @@
 # prometheus
-short overview how to configure prometheus with docker
-example is ready to be used on Amazon ECS
+prometheus examples for 
+- running prometheus with docker
+- running prometheus the classical way
 
-simply run it with docker-compose up
 
